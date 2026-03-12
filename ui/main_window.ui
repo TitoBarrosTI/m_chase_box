@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="elideMode">
      <enum>Qt::TextElideMode::ElideNone</enum>
@@ -681,7 +681,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>titobarrosjr@gmail.com</string>
+        <string/>
        </property>
        <property name="placeholderText">
         <string>email account</string>
