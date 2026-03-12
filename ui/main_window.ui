@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>833</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MChase Box</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-3</y>
+      <width>1007</width>
+      <height>731</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::TextElideMode::ElideNone</enum>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="tab_search">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <attribute name="title">
+      <string>Search</string>
+     </attribute>
+     <widget class="QLabel" name="lblIconSearch">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>7</y>
+        <width>52</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ICON</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="lstMailBody">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>467</y>
+        <width>616</width>
+        <height>220</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>343</width>
+        <height>669</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7_principal">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QLabel" name="lblCaptionOpenTextFile_3">
+           <property name="text">
+            <string>Filter and view the results of your queries here.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblCaptionOpenTextFile_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Filter options:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6_criteria">
+           <item>
+            <widget class="QLabel" name="lblPositions_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Text filter:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="edtCriteria">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
+              <string>Additional criteria</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="lblPositions">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Positions:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEdtPositions">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>edit positions</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="lstPositions">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_positions">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>35</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="lblDomains">
+             <property name="text">
+              <string>Domains:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEdtDomains">
+             <property name="text">
+              <string>edit domains</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="lstDomains">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2_domains">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>35</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="lblExcludedTerms">
+             <property name="text">
+              <string>Excluded search terms:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEdtExcludedTerms">
+             <property name="text">
+              <string>edit terms</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="lstExcludedTerms">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3_excluded_terms">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::Preferred</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>35</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="lblDomains_2">
+             <property name="text">
+              <string>Work mode</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEdtWorkModes">
+             <property name="text">
+              <string>edit work mode</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="lstWorkModes">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>80</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_work_mode">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTreeWidget" name="treeMailResponse">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>79</y>
+        <width>616</width>
+        <height>366</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>FROM</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>SUBJECT</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>DATE</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="lblRetrievedEmails">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>447</y>
+        <width>110</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: orange
+}</string>
+      </property>
+      <property name="text">
+       <string>retrieved emails:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblVacancies">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>448</y>
+        <width>490</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(255, 255, 127)
+}</string>
+      </property>
+      <property name="text">
+       <string>founded vacancies:</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_config">
+     <attribute name="title">
+      <string>Config</string>
+     </attribute>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>571</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblIconConfig">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>7</y>
+        <width>60</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ICON</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCaptionOpenTextFile_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>511</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>configure the fields of your querie here and the conection of your email account.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFieldOfSearch_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>308</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Positions field:</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="gbxAdditonals">
+      <property name="geometry">
+       <rect>
+        <x>431</x>
+        <y>73</y>
+        <width>351</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string> Additionals </string>
+      </property>
+      <widget class="QCheckBox" name="cbxAttachment">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>17</x>
+         <y>29</y>
+         <width>130</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>has an attachment</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbxItsAThread">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>16</x>
+         <y>59</y>
+         <width>130</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>It's a thread</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbxStarred">
+       <property name="geometry">
+        <rect>
+         <x>16</x>
+         <y>89</y>
+         <width>130</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Starred</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="spinBoxMAXEmails">
+       <property name="geometry">
+        <rect>
+         <x>23</x>
+         <y>138</y>
+         <width>68</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="suffix">
+        <string/>
+       </property>
+       <property name="prefix">
+        <string/>
+       </property>
+       <property name="value">
+        <number>10</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblMAXEmails">
+       <property name="geometry">
+        <rect>
+         <x>24</x>
+         <y>117</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>MAX emails</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbxPreFilter">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>30</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pré filter</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="grpBXImapServer">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>73</y>
+        <width>401</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string> IMAP server configuration </string>
+      </property>
+      <widget class="QLineEdit" name="edtAccount">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>40</y>
+         <width>311</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>titobarrosjr@gmail.com</string>
+       </property>
+       <property name="placeholderText">
+        <string>email account</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="edtAppPass">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>311</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::EchoMode::Password</enum>
+       </property>
+       <property name="placeholderText">
+        <string>application password (by environment variable)</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbxIMAP">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>311</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="placeholderText">
+        <string>IMAP server (ex: imap.gmail.com)</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>imap.gmail.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap-mail.outlook.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>outlook.office365.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.mail.yahoo.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.mail.me.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.aol.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.fastmail.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.gmx.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.globo.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.mail.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mail.protonmail.ch</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.tuta.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.uol.com.br</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.yandex.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.yandex.ru</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imap.zoho.com</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>imappro.zoho.com</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="lblBrandIMAP">
+       <property name="geometry">
+        <rect>
+         <x>26</x>
+         <y>155</y>
+         <width>201</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: rgb(85, 170, 0)
+}</string>
+       </property>
+       <property name="text">
+        <string>IMAP SERVER</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QListWidget" name="lstPositionsConfig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>328</y>
+        <width>161</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnEdtPositionsConfig">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>528</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>enter the new position</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAddFixedPositions">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>558</y>
+        <width>161</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>get fixed positions</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="lstDomainsConfig">
+      <property name="geometry">
+       <rect>
+        <x>179</x>
+        <y>328</y>
+        <width>161</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFieldOfSearch_3">
+      <property name="geometry">
+       <rect>
+        <x>183</x>
+        <y>308</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Domains field:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnEdtDomainsConfig">
+      <property name="geometry">
+       <rect>
+        <x>179</x>
+        <y>528</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>enter the new domain</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFieldOfSearch_4">
+      <property name="geometry">
+       <rect>
+        <x>353</x>
+        <y>308</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Excluded terms:</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="lstExcludedTermsConfig">
+      <property name="geometry">
+       <rect>
+        <x>349</x>
+        <y>328</y>
+        <width>161</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnEdtExcludedTermsConfig">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>528</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>enter the new excluded term</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnEdtWorkModesConfig">
+      <property name="geometry">
+       <rect>
+        <x>517</x>
+        <y>528</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>enter the new work mode</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="lstWorkModesConfig">
+      <property name="geometry">
+       <rect>
+        <x>516</x>
+        <y>328</y>
+        <width>161</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFieldOfSearch_5">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>308</y>
+        <width>151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Work mode:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnClearPositionsList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>590</y>
+        <width>160</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>clear positions</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnClearDomainsList">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>590</y>
+        <width>160</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>clear domains</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAddFixedExcludedTerms">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>556</y>
+        <width>161</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>get fixed positions</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnClearExcludedTermsList">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>590</y>
+        <width>160</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>clear excluted terms</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAddFixedWorkModes">
+      <property name="geometry">
+       <rect>
+        <x>518</x>
+        <y>556</y>
+        <width>161</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>get fixed work modes</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnClearWorkModesList">
+      <property name="geometry">
+       <rect>
+        <x>518</x>
+        <y>590</y>
+        <width>160</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>clear work modes</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="btnAddFixedDomains">
+      <property name="geometry">
+       <rect>
+        <x>179</x>
+        <y>559</y>
+        <width>155</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>get fixed domains</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_about">
+     <attribute name="title">
+      <string>About</string>
+     </attribute>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>446</x>
+        <y>145</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>About</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>215</y>
+        <width>621</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A small search engine for selecting important emails, which helps you filter them according to your own criteria. It includes settings for separating by domain, keywords for inclusion, and also for exclusion in the results obtained.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblLinkedIn">
+      <property name="geometry">
+       <rect>
+        <x>238</x>
+        <y>333</y>
+        <width>190</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;a href=&quot;https://www.linkedin.com/in/titobarros/&quot;&gt;linkedin.com/in/titobarros/&lt;/a&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblEmail">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>350</y>
+        <width>191</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;span&gt;titobarrosjr@hotmail.com&lt;/span&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>285</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tito de Barros Junior
+1.0.0
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGitHub">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>317</y>
+        <width>191</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;a href=&quot;https://github.com/TitoBarrosTI&quot;&gt;github.com/TitoBarrosTI&lt;/a&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>285</y>
+        <width>51</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Author: 
+Version: 
+GitHub: 
+LinkedIn:
+Email: 
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>194</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>MChaseBox</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QCommandLinkButton" name="btnLnkReportABug">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>650</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>report a bug</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblIconAbout">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>7</y>
+        <width>60</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ICON</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>742</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_bottom_btns">
+    <property name="geometry">
+     <rect>
+      <x>619</x>
+      <y>738</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5_btns_fetch_close">
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="btnFetchMail">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>fetch emails</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClearMailList">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>clear list</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCloseApp">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="lblMsgs">
+    <property name="geometry">
+     <rect>
+      <x>77</x>
+      <y>738</y>
+      <width>342</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>messages...</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1020</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>edtCriteria</tabstop>
+  <tabstop>btnEdtPositions</tabstop>
+  <tabstop>lstPositions</tabstop>
+  <tabstop>btnEdtDomains</tabstop>
+  <tabstop>lstDomains</tabstop>
+  <tabstop>btnEdtExcludedTerms</tabstop>
+  <tabstop>lstExcludedTerms</tabstop>
+  <tabstop>btnEdtWorkModes</tabstop>
+  <tabstop>lstWorkModes</tabstop>
+  <tabstop>treeMailResponse</tabstop>
+  <tabstop>lstMailBody</tabstop>
+  <tabstop>edtAccount</tabstop>
+  <tabstop>edtAppPass</tabstop>
+  <tabstop>cbxIMAP</tabstop>
+  <tabstop>cbxAttachment</tabstop>
+  <tabstop>cbxItsAThread</tabstop>
+  <tabstop>cbxStarred</tabstop>
+  <tabstop>spinBoxMAXEmails</tabstop>
+  <tabstop>cbxPreFilter</tabstop>
+  <tabstop>lstPositionsConfig</tabstop>
+  <tabstop>lnEdtPositionsConfig</tabstop>
+  <tabstop>btnAddFixedPositions</tabstop>
+  <tabstop>btnClearPositionsList</tabstop>
+  <tabstop>lstDomainsConfig</tabstop>
+  <tabstop>lnEdtDomainsConfig</tabstop>
+  <tabstop>btnAddFixedDomains</tabstop>
+  <tabstop>btnClearDomainsList</tabstop>
+  <tabstop>lstExcludedTermsConfig</tabstop>
+  <tabstop>lnEdtExcludedTermsConfig</tabstop>
+  <tabstop>btnAddFixedExcludedTerms</tabstop>
+  <tabstop>btnClearExcludedTermsList</tabstop>
+  <tabstop>lstWorkModesConfig</tabstop>
+  <tabstop>lnEdtWorkModesConfig</tabstop>
+  <tabstop>btnAddFixedWorkModes</tabstop>
+  <tabstop>btnClearWorkModesList</tabstop>
+  <tabstop>btnLnkReportABug</tabstop>
+  <tabstop>btnFetchMail</tabstop>
+  <tabstop>btnClearMailList</tabstop>
+  <tabstop>btnCloseApp</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
