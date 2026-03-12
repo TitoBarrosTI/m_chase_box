@@ -88,7 +88,24 @@ mchasebox/
 ├── README.md
 ├── LICENSE
 ```
+## Screenshots
 
+### Search Guide
+<a href="docs/screenshots/mchasebox_search.png">
+  <img src="docs/screenshots/mchasebox_search.png" width="60%">
+</a>
+
+### Config Guide
+<a href="docs/screenshots/mchasebox_config.png">
+  <img src="docs/screenshots/mchasebox_config.png" width="60%">
+</a>
+
+### About Guide
+<a href="docs/screenshots/mchasebox_about.png">
+  <img src="docs/screenshots/mchasebox_about.png" width="60%">
+</a>
+
+---
 ---
 
 ## 📦 Build Executable
