@@ -6,9 +6,9 @@ import os, sys
 
 from src.popup_hint import PopupHint
 
-from PySide6.QtGui import QPixmap, QStandardItemModel, QStandardItem
+from PySide6.QtGui import QPixmap, QStandardItemModel, QStandardItem, QDesktopServices
 from PySide6.QtWidgets import QApplication, QAbstractItemView, QListWidget, QMessageBox, QMainWindow, QMenu, QToolButton
-from PySide6.QtCore import Qt, QSize, QEvent, QSettings, QTimer
+from PySide6.QtCore import Qt, QSize, QEvent, QSettings, QTimer, QUrl
 from PySide6.QtUiTools import loadUiType
 from functools import partial
 
@@ -78,6 +78,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.treeMailResponse.itemClicked.connect(self.open_email)
         self.edtCriteria.returnPressed.connect(self.on_click_fetch_emails)
         self.cbxIMAP.currentIndexChanged.connect(lambda: self.on_combo_change(self.cbxIMAP.currentIndex()))
+        self.btnLnkReportABug.clicked.connect(self.open_bug_report)
 
         # events
         self.lstPositions.installEventFilter(self)
@@ -525,6 +526,9 @@ class MainWindow(BaseClass, Ui_MainWindow):
                 self._last_item = None
 
         return super().eventFilter(obj, event)    
+    
+    def open_bug_report(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/TitoBarrosTI/m_chase_box/issues/new"))
     
     def on_click_btn_close(self):
         self.invoke_save_listwidgets()
