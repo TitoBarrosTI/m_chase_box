@@ -570,9 +570,9 @@
         <string>has an attachment</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="cbxItsAThread">
+      <widget class="QCheckBox" name="cbxUnseen">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -586,7 +586,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>It's a thread</string>
+        <string>Unseen</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbxStarred">
@@ -1375,7 +1375,7 @@ Email:
   <tabstop>edtAppPass</tabstop>
   <tabstop>cbxIMAP</tabstop>
   <tabstop>cbxAttachment</tabstop>
-  <tabstop>cbxItsAThread</tabstop>
+  <tabstop>cbxUnseen</tabstop>
   <tabstop>cbxStarred</tabstop>
   <tabstop>spinBoxMAXEmails</tabstop>
   <tabstop>cbxPreFilter</tabstop>

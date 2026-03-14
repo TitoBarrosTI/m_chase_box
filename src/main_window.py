@@ -152,6 +152,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
                                 self.edtAccount,
                                 self.lblRetrievedEmails,
                                 self.cbxStarred,
+                                self.cbxUnseen,
                                 my_positions=my_positions,
                                 max_emails=self.spinBoxMAXEmails.value(),
                                 treeMailResponse=self.treeMailResponse
@@ -169,7 +170,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.invoke_save_listwidgets()
 
     def add_item_domain(self):
-        text:str = self.lnEdtDomains.text().strip()
+        text:str = self.lnEdtDomainsConfig.text().strip()
         
         if not text:
             return
@@ -180,7 +181,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
 
         self.lstDomainsConfig.addItem(text)
         self.lstDomains.addItem(text)
-        self.lnEdtDomains.clear()
+        self.lnEdtDomainsConfig.clear()
 
         self.invoke_save_listwidgets()
 

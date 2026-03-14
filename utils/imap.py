@@ -14,17 +14,34 @@ import socket
 import traceback
 
 # IMAP OR filter (many words)
+# def or_chain(field, words):
+#     if not words:
+#         return None
+
+#     words = [remove_accents(w) for w in words]
+#     expr = f'{field} "{words[0]}"'
+
+#     for w in words[1:]:
+#         expr = f'(OR {expr} {field} "{w}")'
+
+#     return expr
+
 def or_chain(field, words):
     if not words:
-        return None
+        return ""
 
     words = [remove_accents(w) for w in words]
-    expr = f'{field} "{words[0]}"'
+    
+    # Se só houver uma palavra, não precisa de OR
+    if len(words) == 1:
+        return f'{field} "{words[0]}"'
 
-    for w in words[1:]:
-        expr = f'(OR {expr} {field} "{w}")'
-
-    return expr
+    # Para N palavras, precisamos de N-1 operadores OR no início
+    ops = "OR " * (len(words) - 1)
+    
+    # Monta a string: OR OR OR FIELD "W1" FIELD "W2" FIELD "W3"...
+    terms = [f'{field} "{w}"' for w in words]
+    return f"{ops}{' '.join(terms)}"
 
 def remove_accents(text):
     return unicodedata.normalize('NFKD', text)\
@@ -57,6 +74,7 @@ def fetch_grouped_positions(server_imap,
                             edtAccount=None,
                             lblRetrievedEmails=None,
                             cbxStarred=None,
+                            cbxUnseen=None,
                             my_positions=None,
                             max_emails=10,
                             treeMailResponse=None):
@@ -86,32 +104,36 @@ def fetch_grouped_positions(server_imap,
         JOB_MODES = [remove_accents(w.lower()) for w in extract_words(lstWorkModeConfig)]
 
         # Configuring IMAP email rules
-        subject_filter = or_chain("SUBJECT", ["vagas","oportunidades","emprego","contratando","trabalhe","trabalho"])
-        domain_filter = or_chain("FROM", DOMAIN_WORDS)
+        subject_filter = f'({or_chain("SUBJECT", ["vagas","oportunidade","emprego","contratando","trabalh"])})'
+        domain_filter = f'({or_chain("FROM", DOMAIN_WORDS)})'
+        starred_filter = "FLAGGED" if cbxStarred.isChecked() else None
+        unseen_filter = "UNSEEN" if cbxUnseen.isChecked() else None
 
-        criteria = []
+        criteria: list[str] = []
         
-        if subject_filter:
+        if subject_filter is not None:
             criteria.append(subject_filter)
 
-        if domain_filter:
+        if domain_filter is not None:
             criteria.append(domain_filter)
 
+        if starred_filter is not None:
+            criteria.append(starred_filter)
+
+        if unseen_filter is not None:
+            criteria.append(unseen_filter)
+
         query = remove_accents(" ".join(criteria))
-        
-        starred_filter = "FLAGGED" if cbxStarred.isChecked() else "UNFLAGGED"
         
         # pre_filter: quick IMAP check to discard irrelevant emails
         if cbxPreFilter.isChecked(): # type: ignore
             status, dados_busca = imap_server.search(
                 None,
-                starred_filter,
                 query
             )
         else:
             status, dados_busca = imap_server.search(
                 None,
-                starred_filter,
                 "ALL"
             )
         
