@@ -216,9 +216,18 @@ def fetch_grouped_positions(server_imap,
                                 item.setText(0, msg.get('From'))
                                 item.setText(1, topic)
                                 item.setText(2, formated_date)
-                                item.setData(0, Qt.UserRole, id_obj)
-                                item.setData(1, Qt.UserRole, topic)
-                                item.setData(2, Qt.UserRole, body)
+                                item.setData(0, Qt.ItemDataRole.UserRole, {
+                                    "from":    str(msg.get('From')),
+                                    "topic":        str(topic),
+                                    "date":      str(formated_date),
+                                    "body":  str(body),
+                                })
+                                item.setData(1, Qt.UserRole, id_obj)
+                                item.setData(2, Qt.UserRole, topic)
+                                item.setData(3, Qt.UserRole, body)
+                                
+
+
         
         btnClearList.setEnabled(True) # type: ignore
         imap_server.logout()

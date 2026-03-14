@@ -4,6 +4,8 @@
 
 import os, sys
 
+from src.popup_hint import PopupHint
+
 from PySide6.QtGui import QPixmap, QStandardItemModel, QStandardItem
 from PySide6.QtWidgets import QApplication, QAbstractItemView, QListWidget, QMessageBox, QMainWindow, QMenu, QToolButton
 from PySide6.QtCore import Qt, QSize, QEvent, QSettings, QTimer
@@ -29,6 +31,14 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.setupUi(self)
         self.setFixedSize(self.size())
         self.settings = QSettings("TitoDev", "MChaseBox")
+
+        # popup_hint (resume)
+        self._popup = PopupHint(dark_mode=True)
+        self._last_item = None
+        self._hide_timer = QTimer(singleShot=True)
+        self._hide_timer.timeout.connect(self._popup.hide)
+        self.treeMailResponse.setMouseTracking(True)
+        self.treeMailResponse.viewport().installEventFilter(self)
         
         # signal connections 
         self.btnEdtPositions.clicked.connect(partial(self.on_click_edit_list_config, self.lnEdtPositionsConfig))
@@ -371,19 +381,6 @@ class MainWindow(BaseClass, Ui_MainWindow):
             list_a.takeItem(row)
             list_b.takeItem(row)
 
-    def eventFilter(self, obj, event):
-        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Delete:
-
-            if obj == self.lstPositions:
-                self.remove_selected_item(self.lstPositions, self.lstPositionsConfig)
-                return True
-
-            elif obj == self.lstPositionsConfig:
-                self.remove_selected_item(self.lstPositionsConfig, self.lstPositions)
-                return True
-
-        return super().eventFilter(obj, event)
-
     def clear_email_list(self):
         self.treeMailResponse.clear()
         self.lstMailBody.clear()
@@ -442,10 +439,17 @@ class MainWindow(BaseClass, Ui_MainWindow):
         pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         return re.match(pattern, domain) is not None
     
+    def extract_email(self, text: str) -> str:
+        match = re.search(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", text)
+        if match:
+            return match.group(0)
+        return "no email"
+    
     def open_email(self, item, collumn):
-        email_id = item.data(0, Qt.UserRole)                   
-        topic = item.data(1, Qt.UserRole)
-        body = item.data(2, Qt.UserRole)
+        resume = item.data(0, Qt.UserRole)
+        email_id = item.data(1, Qt.UserRole)
+        topic = item.data(2, Qt.UserRole)
+        body = item.data(3, Qt.UserRole)
         self.lstMailBody.clear()
 
         # subject in first line
@@ -468,8 +472,8 @@ class MainWindow(BaseClass, Ui_MainWindow):
         if index < 0:
             return
 
-        servidor_completo = self.cbxIMAP.itemText(index).lower()
-        parts = servidor_completo.split('.')
+        full_server_name = self.cbxIMAP.itemText(index).lower()
+        parts = full_server_name.split('.')
         
         # If it ends in something like .com.br (it has 4+ parts and the second to last one is 'com')
         if len(parts) >= 4 and parts[-2] == 'com':
@@ -487,6 +491,40 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.lblMsgs.setText(text)
         QTimer.singleShot(seconds * 1000, self.lblMsgs.clear)
 
+    def eventFilter(self, obj, event):
+        # Captures the DELETE key for position lists.
+        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Delete:
+            if obj == self.lstPositions:
+                self.remove_selected_item(self.lstPositions, self.lstPositionsConfig)
+                return True
+            elif obj == self.lstPositionsConfig:
+                self.remove_selected_item(self.lstPositionsConfig, self.lstPositions)
+                return True
+
+        # Captures mouse movement and cursor output to the popup
+        if obj is self.treeMailResponse.viewport():  # <-- viewport, não a tree
+            if event.type() == QEvent.Type.MouseMove:
+                # event.pos() aqui já é relativo à tree, não precisa mapear
+                item = self.treeMailResponse.itemAt(event.pos())
+
+                if item and item is not self._last_item:
+                    self._last_item = item
+                    self._hide_timer.stop()
+                    data = item.data(0, Qt.ItemDataRole.UserRole)
+                    if data:
+                        self._popup.set_content(data)
+                        self._popup.show_near_cursor()
+
+                elif not item:
+                    self._hide_timer.start(250)
+                    self._last_item = None
+
+            elif event.type() == QEvent.Type.Leave:
+                self._hide_timer.start(300)
+                self._last_item = None
+
+        return super().eventFilter(obj, event)    
+    
     def on_click_btn_close(self):
         self.invoke_save_listwidgets()
         QApplication.quit()
