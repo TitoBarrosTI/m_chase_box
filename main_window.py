@@ -119,11 +119,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
             self.show_message("no position specified")
             return
         
-        my_criteria = []
         my_positions = []
-        my_domains = []
-        my_excluded_terms = []
-        my_works_mode = []
         
         for i in range(self.lstPositionsConfig.count()):
             text_position = self.lstPositionsConfig.item(i).text().lower()

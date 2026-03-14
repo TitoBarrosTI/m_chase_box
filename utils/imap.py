@@ -65,7 +65,7 @@ def fetch_grouped_positions(server_imap,
     PASS = os.environ.get("EMAIL_PASS")
     USER = edtAccount.text().strip()
     
-    if not edtAccount:
+    if not USER:
         show_message("❌ Error: Email account not specified.",10) # type: ignore
         return
     
@@ -224,15 +224,18 @@ def fetch_grouped_positions(server_imap,
         imap_server.logout()
         show_message(f"--- ✅ END: {(total_counter)} relevant emails saved in REMOTE_JOBS.txt ---",30) # type: ignore
         lblRetrievedEmails.setText(f'retrieved emails: {str(total_counter)}')
+    
     except imaplib.IMAP4.error as e:
         show_message(f"❌ IMAP specified error: {e}",20) # type: ignore
         show_message(f"   Code: {e.args}",10) # type: ignore
         traceback.print_exc()
+    
     except socket.gaierror as e:
         show_message(f"❌ DNS/network error: {e}",10) # type: ignore
 
     except ConnectionRefusedError:
         show_message("❌ Refused connection - 993 port bloqued?",10) # type: ignore
+    
     except Exception as e:
         show_message(f"❌ Unexpected error: {type(e).__name__}: {e}",10) # type: ignore
         traceback.print_exc()
