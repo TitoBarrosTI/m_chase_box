@@ -122,14 +122,24 @@ class MainWindow(BaseClass, Ui_MainWindow):
 
         server_imap = self.cbxIMAP.currentText().strip()
 
-        if not server_imap:
-            self.show_message("IMAP Server not specified")
+        email_empty = not self.edtAccount.text() 
+        pass_empty = not os.environ.get("EMAIL_PASS")
+        imap_empty = not server_imap
+        position_empty = not self.lstPositionsConfig.count()
+
+        self.set_field_error_color(self.edtAccount, email_empty)
+        self.set_field_error_color(self.edtAppPass, pass_empty)
+        self.set_field_error_color(self.cbxIMAP, imap_empty)
+        self.set_field_error_color(self.lstPositionsConfig, position_empty)
+
+        if email_empty or pass_empty or imap_empty or position_empty:
+            if pass_empty:
+               self.edtAppPass.setText("-- [env:EMAIL_PASS] not found --")
+            
+            self.show_message("please fill in all required fields",10)
+            self.tabWidget.setCurrentIndex(1)
             return
-        
-        if not self.lstPositionsConfig.count():
-            self.show_message("no position specified")
-            return
-        
+
         my_positions = []
         
         for i in range(self.lstPositionsConfig.count()):
@@ -489,7 +499,14 @@ class MainWindow(BaseClass, Ui_MainWindow):
         # Update your label by capitalizing the first letter.
         self.lblBrandIMAP.setText(brand.capitalize())
 
-    def show_message(self, text:str, seconds=3):
+    def set_field_error_color(self, widget, has_error: bool):
+        if has_error:
+            widget.setStyleSheet("border: 1px solid red;")
+            QTimer.singleShot(5000, lambda: widget.setStyleSheet(""))  # 5 secs
+        else:
+            widget.setStyleSheet("")
+
+    def show_message(self, text:str, seconds=5):
         self.lblMsgs.setText(text)
         QTimer.singleShot(seconds * 1000, self.lblMsgs.clear)
 

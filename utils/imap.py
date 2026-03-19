@@ -13,26 +13,13 @@ import unicodedata
 import socket
 import traceback
 
-# IMAP OR filter (many words)
-# def or_chain(field, words):
-#     if not words:
-#         return None
-
-#     words = [remove_accents(w) for w in words]
-#     expr = f'{field} "{words[0]}"'
-
-#     for w in words[1:]:
-#         expr = f'(OR {expr} {field} "{w}")'
-
-#     return expr
-
 def or_chain(field, words):
     if not words:
         return ""
 
     words = [remove_accents(w) for w in words]
     
-    # Se só houver uma palavra, não precisa de OR
+    # If there is only one word, you don't need OR.
     if len(words) == 1:
         return f'{field} "{words[0]}"'
 
@@ -83,20 +70,12 @@ def fetch_grouped_positions(server_imap,
     PASS = os.environ.get("EMAIL_PASS")
     USER = edtAccount.text().strip()
     
-    if not USER:
-        show_message("❌ Error: Email account not specified.",10) # type: ignore
-        return
-    
-    if not PASS:
-        show_message("❌ Error: The environment variable 'EMAIL_PASS' was not found.",10) # type: ignore
-        return
-
     try:
         imap_server = imaplib.IMAP4_SSL(server_imap)
         imap_server.login(USER, PASS)
         imap_server.select("INBOX")
 
-        # recovering words od components
+        # recovering words of components
         CRITERIA_WORDS = [remove_accents(w.lower()) for w in extract_words(None,edtCriteria)]
         DOMAIN_WORDS = [remove_accents(w.lower()) for w in extract_words(lstDomainsConfig)]
         JOB_WORDS = [remove_accents(w.lower()) for w in extract_words(lstPositionsConfig)]
