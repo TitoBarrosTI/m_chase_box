@@ -133,8 +133,12 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.set_field_error_color(self.lstPositionsConfig, position_empty)
 
         if email_empty or pass_empty or imap_empty or position_empty:
+            print("ALGUEM VEIO VAZIO:::::::::::::")
+            
             if pass_empty:
                self.edtAppPass.setText("-- [env:EMAIL_PASS] not found --")
+            else:
+                self.edtAppPass.setText("-- [env:EMAIL_PASS] found --")
             
             self.show_message("please fill in all required fields",10)
             self.tabWidget.setCurrentIndex(1)

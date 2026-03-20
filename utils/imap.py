@@ -90,10 +90,10 @@ def fetch_grouped_positions(server_imap,
 
         criteria: list[str] = []
         
-        if subject_filter is not None:
+        if subject_filter is not None and domain_filter.strip() != '()':
             criteria.append(subject_filter)
 
-        if domain_filter is not None:
+        if domain_filter is not None and domain_filter.strip() != '()':
             criteria.append(domain_filter)
 
         if starred_filter is not None:
@@ -103,7 +103,7 @@ def fetch_grouped_positions(server_imap,
             criteria.append(unseen_filter)
 
         query = remove_accents(" ".join(criteria))
-        
+
         # pre_filter: quick IMAP check to discard irrelevant emails
         if cbxPreFilter.isChecked(): # type: ignore
             status, dados_busca = imap_server.search(
